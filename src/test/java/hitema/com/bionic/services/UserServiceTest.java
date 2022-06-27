@@ -41,15 +41,16 @@ public class UserServiceTest {
 
     @Test
     void read() {
-        long id = 9;
-        service.read(id);
+        log.info("<<<Start   read USER >>>");
+        service.read( user.getId());
+        log.info("<<<END   read USER >>>");
     }
 
     @Test
     @Order(2)
     void delete() {
         log.info("<<<START shouldDeleteNewCreatedCountry >>>");
-       // assertTrue(service.delete(user.getId()),"ERROR While DELETE New Created Country, id"+user.getId());
+        assertTrue("ERROR While DELETE New Created Country, id"+user.getId(), service.delete(user.getId()));
         log.info("country Id:{} deleted",user.getId());
         log.info("<<<END   shouldDeleteNewCreatedCountry >>>");
     }
