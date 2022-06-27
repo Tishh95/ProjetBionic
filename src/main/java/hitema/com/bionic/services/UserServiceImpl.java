@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService{
         this.repository = repository;
     }
     /**
-     * @return repository
+     * @return User list
      */
     @Override
     public List<User> readAll() {

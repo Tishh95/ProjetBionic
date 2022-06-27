@@ -12,7 +12,7 @@ public class User {
     @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
             @Column(name="ID")
-    private int id;
+    private long id;
 
     @ManyToMany
     @JoinTable( name = "User_Club",
@@ -30,7 +30,7 @@ public class User {
     @OneToMany( targetEntity=Note.class, mappedBy="Notes" )
     private List<Note> notes = new ArrayList<>();
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

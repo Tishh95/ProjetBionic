@@ -11,7 +11,7 @@ public class Club {
     @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
             @Column(name="ID")
-    private int id;
+    private long id;
     @Column(name="Club_Name")
     private String name;
     @Column(name="Admin")
@@ -44,12 +44,20 @@ public class Club {
         this.creatorId = creatorId;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public List<User> getUsers(){
