@@ -8,17 +8,17 @@ public class Note {
     @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
             @Column(name="ID")
-    private int id;
+    private long id;
     @Column(name="User_ID")
-    private int user_id;
+    private long user_id;
     @Column(name="Club_ID")
-    private int club_id;
+    private long club_id;
     @Column(name="Texte")
     private String note;
     @Column(name="Note_Name")
     private String title;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -26,7 +26,7 @@ public class Note {
         this.id = id;
     }
 
-    public int getUser_id() {
+    public long getUser_id() {
         return user_id;
     }
 
@@ -34,7 +34,7 @@ public class Note {
         this.user_id = user_id;
     }
 
-    public int getClub_id() {
+    public long getClub_id() {
         return club_id;
     }
 
