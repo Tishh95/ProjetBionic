@@ -1,4 +1,4 @@
-package hitema.com.bionic.Entity;
+package hitema.com.bionic.entity;
 
 import javax.persistence.*;
 
