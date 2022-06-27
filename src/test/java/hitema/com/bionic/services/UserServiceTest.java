@@ -45,6 +45,13 @@ public class UserServiceTest {
         service.read(id);
     }
 
-
+    @Test
+    @Order(2)
+    void delete() {
+        log.info("<<<START shouldDeleteNewCreatedCountry >>>");
+       // assertTrue(service.delete(user.getId()),"ERROR While DELETE New Created Country, id"+user.getId());
+        log.info("country Id:{} deleted",user.getId());
+        log.info("<<<END   shouldDeleteNewCreatedCountry >>>");
+    }
 
 }
