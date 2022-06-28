@@ -2,13 +2,13 @@
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="css/login.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../css/login.css" media="screen" type="text/css" />
 </head>
 <body>
 <div id="container">
     <!-- zone de connexion -->
 
-    <form action="php/verification.php" method="POST">
+    <form action="verification.php" method="POST">
         <h1>Connexion</h1>
 
         <label><b>Nom d'utilisateur</b></label>
