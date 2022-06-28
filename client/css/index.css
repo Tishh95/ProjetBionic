@@ -1,0 +1,27 @@
+.flex-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid yellow;
+    width: 70%;
+    height: 100%;
+}
+
+.flex-child-two{
+    margin-right: 20px;
+    width: 30%;
+    height: 100%;
+}
+
+.divNotes{
+    width: 100%;
+    margin: 3px;
+}
+
+.divNotes:Hover{
+    background-color: gold;
+}
