@@ -17,6 +17,7 @@
 
     <div id="tabClubs" class="flex-child-two">
         Your Clubs
+        <a href='create.html' style="float: right"> créer un club</a>
     </div>
 
 </div>
@@ -31,15 +32,16 @@
         callWebService("/users/user/note/" + user_id  ,null,notesOk, null, 'GET',1)
     }
     function notesOk(data, idx){
+        gNotes= data
         console.log('Retour Web Service cities')
         let addNotes = ' ', bk = ''
         for (k in data.notes) {
             console.log(data)
             addNotes += '<div class="divNotes"> ' +
-                '<td >'+data.notes[k].title+'</td>' +
+                '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
                 '</br>' +
-                '<td><a  onclick="displayOneClub('+k+')">'+data.notes[k].note+'</a></td>' +
-                '</div>' ;
+                '<td>'+data.notes[k].note+'</td>' +
+                '</div></a>' ;
         }
         if(data.clubs.length > 0) {
             clubOk(data.clubs)
@@ -68,6 +70,12 @@
         let club = gClubs[key];
         putProp('club',club,true)
         post('club.html')
+    }
+    function displayOneNote(id) {
+        console.log('display')
+        let note = gNotes[key];
+        putProp('note',note,true)
+        post('create.html')
     }
 
 
