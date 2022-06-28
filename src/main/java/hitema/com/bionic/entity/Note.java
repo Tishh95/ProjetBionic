@@ -7,13 +7,14 @@ import javax.persistence.*;
 public class Note {
     @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-            @Column(name="id")
+            @Column(name="note_id")
     private long id;
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
-    @Column(name="club_id")
-    private long club_id;
+    @ManyToOne
+    @JoinColumn(name="club_id")
+    private Club club;
     @Column(name="content")
     private String note;
     @Column(name="note_name")
@@ -31,16 +32,15 @@ public class Note {
         return user.getId();
     }
 
-    public void setUser_id(long user_id) {
-        this.user.setId(user_id);
+    public void setUser(User user) {
+        this.user = user;
     }
-
     public long getClub_id() {
-        return club_id;
+        return club.getId();
     }
 
-    public void setClub_id(int club_id) {
-        this.club_id = club_id;
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     public String getNote() {

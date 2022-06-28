@@ -15,7 +15,7 @@ public class Club {
     @Column(name="club_name")
     private String name;
     @Column(name="admin")
-    private int creatorId;
+    private long creatorId;
     @Column(name="date_create")
     private LocalDateTime creationDate;
 
@@ -25,7 +25,7 @@ public class Club {
             inverseJoinColumns = @JoinColumn( name = "club_id" ) )
     private List<User> users = new ArrayList<>();
 
-    @OneToMany(targetEntity=Note.class)
+    @OneToMany(targetEntity=Note.class, mappedBy = "user")
     private List<Note> notes = new ArrayList<>();
 
     public String getName() {
@@ -36,11 +36,11 @@ public class Club {
         this.name = name;
     }
 
-    public int getCreatorId() {
+    public long getCreatorId() {
         return creatorId;
     }
 
-    public void setCreatorId(int creatorId) {
+    public void setCreatorId(long creatorId) {
         this.creatorId = creatorId;
     }
 
@@ -48,7 +48,7 @@ public class Club {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
