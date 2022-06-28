@@ -29,24 +29,26 @@
         let user_id = 3
         console.log('appel à la fonction fill()...')
         callWebService("/users/user/note/" + user_id  ,null,notesOk, null, 'GET',1)
-        callWebService("/clubs/list",null,clubOk, null, 'GET',1)
     }
     function notesOk(data, idx){
         console.log('Retour Web Service cities')
         let addNotes = ' ', bk = ''
         for (k in data.notes) {
-            console.log(data.notes[k])
+            console.log(data)
             addNotes += '<div class="divNotes"> ' +
                 '<td >'+data.notes[k].title+'</td>' +
                 '</br>' +
                 '<td><a  onclick="displayOneClub('+k+')">'+data.notes[k].note+'</a></td>' +
                 '</div>' ;
         }
+        if(data.clubs.length > 0) {
+            clubOk(data.clubs)
+        }
         document.getElementById('tabNotes').innerHTML += addNotes;
 
     }
 
-    function clubOk(data, idx) {
+    function clubOk(data) {
         let addClub = ' '
         for ( key in data ){
             gClubs= data
