@@ -34,9 +34,5 @@ public class NoteControlleur {
         return service.read(id);
     }
 
-    @GetMapping("/xd")
-    String gettest(@PathVariable("id") Long id){
-        log.trace("user Id :{}",id);
-        return "héhé";
-    }
+
 }
