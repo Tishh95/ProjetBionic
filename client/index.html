@@ -41,7 +41,8 @@
                 '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
                 '</br>' +
                 '<td>'+data.notes[k].note+'</td>' +
-                '</div></a>' ;
+                '</div></a>' +
+                '<button onclick="drop(id)"> delete</button>';
         }
         if(data.clubs.length > 0) {
             clubOk(data.clubs)
@@ -77,7 +78,9 @@
         putProp('note',note,true)
         post('create.html')
     }
-
+    function drop(id) {
+        console.log(drop)
+    }
 
 
 
