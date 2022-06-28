@@ -36,7 +36,11 @@ public class Note {
         this.user = user;
     }
     public long getClub_id() {
-        return club.getId();
+        if (club == null) {
+            return 0l;
+        } else {
+            return club.getId();
+        }
     }
 
     public void setClub(Club club) {
