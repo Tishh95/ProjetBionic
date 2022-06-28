@@ -40,4 +40,9 @@ public class NoteControlleur {
         return service.read(id);
     }
 
+    @GetMapping("/note/drop/{id}")
+    void dropNote(@PathVariable("id") Long id){
+        log.trace("user Id :{}",id);
+        service.delete(id);
+    }
 }

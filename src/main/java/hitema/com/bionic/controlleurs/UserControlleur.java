@@ -40,4 +40,5 @@ public class UserControlleur {
         log.trace("user Id :{}",id);
         return service.getOne(id);
     }
+
 }
