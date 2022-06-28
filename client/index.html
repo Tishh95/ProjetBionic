@@ -12,6 +12,7 @@
     <div id="tabNotes" class="flex-child">
         Your notes
         <a href='create.html' style="float: right"> Create</a>
+
     </div>
 
     <div id="tabClubs" class="flex-child-two">
@@ -39,7 +40,7 @@
             let club = data[key] ;
             console.log(club)
             addClub += '<div class="divNotes"> ' +
-                '<td>'+club.name+'</td>' +
+                '<td >'+club.name+'</td>' +
                 '</br>' +
                 '<td><a  onclick="displayOneClub('+key+')">'+club.creationDate+'</a></td>' +
                 '</div>' ;
@@ -64,7 +65,7 @@
         for ( key in data ){
                 let city = data[key] ;
                 line += '<div class="divNotes"> ' +
-                    '<td>'+city.title+'</td>' +
+                    '<td class="itemsTitle">'+city.title+'</td>' +
                     '</br>' +
                     '<td><a  onclick="displayOneCity('+key+')">'+city.note+'</a></td>' +
                     '</div>' ;

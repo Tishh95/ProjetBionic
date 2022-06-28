@@ -6,12 +6,14 @@
 
 .flex-child {
     flex: 1;
-    border: 2px solid yellow;
+    border: 2px solid grey;
     width: 70%;
     height: 100%;
+    padding: 1%;
 }
 
 .flex-child-two{
+    margin-left: 2%;
     margin-right: 20px;
     width: 30%;
     height: 100%;
@@ -22,6 +24,10 @@
     margin: 3px;
 }
 
+
 .divNotes:Hover{
-    background-color: gold;
+    background-color: grey;
+}
+.itemsTitle {
+
 }
