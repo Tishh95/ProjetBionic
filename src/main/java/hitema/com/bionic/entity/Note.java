@@ -3,19 +3,19 @@ package hitema.com.bionic.entity;
 import javax.persistence.*;
 
 @Entity
-    @Table(name = "Note")
+    @Table(name = "note")
 public class Note {
     @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-            @Column(name="ID")
+            @Column(name="id")
     private long id;
-    @Column(name="User_ID")
+    @Column(name="user_id")
     private long user_id;
-    @Column(name="Club_ID")
+    @Column(name="club_id")
     private long club_id;
-    @Column(name="Texte")
+    @Column(name="content")
     private String note;
-    @Column(name="Note_Name")
+    @Column(name="note_name")
     private String title;
 
     public long getId() {

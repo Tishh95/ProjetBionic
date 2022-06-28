@@ -6,26 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-    @Table(name = "Club")
+    @Table(name = "club")
 public class Club {
     @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-            @Column(name="ID")
+            @Column(name="club_id")
     private long id;
-    @Column(name="Club_Name")
+    @Column(name="club_name")
     private String name;
-    @Column(name="Admin")
+    @Column(name="admin")
     private int creatorId;
-    @Column(name="Date_Create")
+    @Column(name="date_create")
     private LocalDateTime creationDate;
 
     @ManyToMany
-    @JoinTable( name = "User_Club",
-            joinColumns = @JoinColumn( name = "UserID" ),
-            inverseJoinColumns = @JoinColumn( name = "Club_ID" ) )
+    @JoinTable( name = "user_club",
+            joinColumns = @JoinColumn( name = "user_id" ),
+            inverseJoinColumns = @JoinColumn( name = "club_id" ) )
     private List<User> users = new ArrayList<>();
 
-    @OneToMany( targetEntity=Note.class, mappedBy="Notes" )
+    @OneToMany(targetEntity=Note.class)
     private List<Note> notes = new ArrayList<>();
 
     public String getName() {
