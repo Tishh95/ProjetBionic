@@ -1,5 +1,5 @@
 // Root URL of Backend Application Server
-let webURL = "http://localhost:8091/sakila" ;
+let webURL = "http://localhost:8091/bionic" ;
 // let globalCities = '' ;
 // let globalCountries = '' ;
 // let globalUsers = '' ;
@@ -187,7 +187,7 @@ function OnErrorStd(jqXHR, status, error)
 
 function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, errorMethod)
 {
-	clearError()
+
 
 	if ( httpMethod === null ){
 		httpMethod = 'POST';
