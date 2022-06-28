@@ -21,16 +21,17 @@ public class UserControlleur {
         this.service = service;
     }
 
-    @GetMapping({"","/list"})
+    @GetMapping({"/list"})
     List<User> getAll(){
         log.info("getAll");
         return service.readAll();
     }
 
 
-    @GetMapping("/{id}")
-    User getOne(@PathVariable("id") Long id){
+    @GetMapping("/test/{id}")
+    String getOne(@PathVariable("id") Long id){
         log.trace("user Id :{}",id);
-        return service.read(id);
+        service.read(id);
+        return "test id";
     }
 }
