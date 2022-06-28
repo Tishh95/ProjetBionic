@@ -9,12 +9,13 @@
 
 <div class="flex-container">
 
-    <div id="tabCities" class="flex-child">
-        Flex Column 1
+    <div id="tabNotes" class="flex-child">
+        Your notes
+        <a href='create.html' style="float: right"> Create</a>
     </div>
 
-    <div class="flex-child-two">
-        Flex Column 2
+    <div id="tabClubs" class="flex-child-two">
+        Your Clubs
     </div>
 
 </div>
@@ -25,12 +26,37 @@
 <script>
     let user_id
     function fill(){
+        let gClubs
         console.log('appel à la fonction fill()...')
         user_id = 3
-        callWebService("/notes/list",null,citiesOK, null, 'GET',1)
+        callWebService("/notes/list",null,notesOk, null, 'GET',1)
+        callWebService("/clubs/list",null,clubOk, null, 'GET',1)
+    }
+    function clubOk(data, idx) {
+        let addClub = ' '
+        for ( key in data ){
+            gClubs= data
+            let club = data[key] ;
+            console.log(club)
+            addClub += '<div class="divNotes"> ' +
+                '<td>'+club.name+'</td>' +
+                '</br>' +
+                '<td><a  onclick="displayOneClub('+key+')">'+club.creationDate+'</a></td>' +
+                '</div>' ;
+        }
+        document.getElementById('tabClubs').innerHTML += addClub;
     }
 
-    function citiesOK(data, idx){
+    function displayOneClub(id) {
+        console.log('display')
+        let club = gClubs[key];
+        putProp('club',club,true)
+        post('club.html')
+    }
+
+
+
+    function notesOk(data, idx){
         console.log('Retour Web Service cities')
         console.log(data)
 
@@ -43,7 +69,7 @@
                     '<td><a  onclick="displayOneCity('+key+')">'+city.note+'</a></td>' +
                     '</div>' ;
         }
-        document.getElementById('tabCities').innerHTML += line;
+        document.getElementById('tabNotes').innerHTML += line;
 
     }
 </script>
