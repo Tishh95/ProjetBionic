@@ -9,8 +9,9 @@ public class Note {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
             @Column(name="id")
     private long id;
-    @Column(name="user_id")
-    private long user_id;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
     @Column(name="club_id")
     private long club_id;
     @Column(name="content")
@@ -27,11 +28,11 @@ public class Note {
     }
 
     public long getUser_id() {
-        return user_id;
+        return user.getId();
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser_id(long user_id) {
+        this.user.setId(user_id);
     }
 
     public long getClub_id() {

@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 @SpringBootTest
@@ -19,12 +22,13 @@ public class UserServiceTest {
     @Autowired
     UserService service;
 
-    private User user;
+    private User user = new User();
     @Test
+    @Order(3)
     void readAll() {
-        log.trace("<<<<<<<City Read ALL>>>>>>>");
+        log.info("<<<<<<<City Read ALL>>>>>>>");
         service.readAll().forEach(c->log.trace("{}",c));
-        log.trace("<<<<<<<END>>>>>>>");
+        log.info("<<<<<<<END>>>>>>>");
 
     }
 
@@ -32,26 +36,31 @@ public class UserServiceTest {
     @Order(1)
     void create() {
         log.info("<<<START create USER  >>>");
-        user = new User();
-        user.setName("Name");
+        user.setName("Name"+ LocalDateTime.now().toString());
         user.setPassword("password");
-        service.create(user);
+        var u = service.create(user);
+        assertNotNull(u.getId(),"ERROR While Create Role :" +user);
+        service.delete(u.getId());
         log.info("<<<END   create USER >>>");
-    }
 
-    @Test
-    void read() {
-        log.info("<<<Start   read USER >>>");
-        service.read( user.getId());
-        log.info("<<<END   read USER >>>");
     }
 
     @Test
     @Order(2)
+    void read() {
+        log.info("<<<Start   read USER >>>");
+        var u = service.read(1l);
+        log.info("<<<END   read USER >>>");
+    }
+
+    @Test
+    @Order(4)
     void delete() {
+        user.setName("Name"+ LocalDateTime.now().toString());
+        user.setPassword("password");
+        user = service.create(user);
         log.info("<<<START shouldDeleteNewCreatedCountry >>>");
-        assertTrue("ERROR While DELETE New Created Country, id"+user.getId(), service.delete(user.getId()));
-        log.info("country Id:{} deleted",user.getId());
+        assertTrue("ERROR While DELETE New Created Country, id", service.delete(user.getId()));
         log.info("<<<END   shouldDeleteNewCreatedCountry >>>");
     }
 

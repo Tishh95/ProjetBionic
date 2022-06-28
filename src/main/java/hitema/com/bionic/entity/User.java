@@ -27,14 +27,14 @@ public class User {
     @Column(name="date_create")
     private LocalDateTime creationDate;
 
-    @OneToMany( targetEntity=Note.class)
+    @OneToMany( targetEntity=Note.class, mappedBy = "user")
     private List<Note> notes = new ArrayList<>();
 
     public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
