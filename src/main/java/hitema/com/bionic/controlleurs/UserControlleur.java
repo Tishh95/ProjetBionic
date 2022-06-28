@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -28,10 +29,15 @@ public class UserControlleur {
     }
 
 
-    @GetMapping("/test/{id}")
+    @GetMapping("/user/{id}")
     String getOne(@PathVariable("id") Long id){
         log.trace("user Id :{}",id);
         service.read(id);
         return "test id";
+    }
+    @GetMapping("/user/note/{id}")
+    Optional<User> getNotes(@PathVariable("id") Long id){
+        log.trace("user Id :{}",id);
+        return service.getOne(id);
     }
 }

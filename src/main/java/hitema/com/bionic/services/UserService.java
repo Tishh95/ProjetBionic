@@ -3,6 +3,7 @@ package hitema.com.bionic.services;
 import hitema.com.bionic.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -11,4 +12,5 @@ public interface UserService {
         User read(Long id);
         User update(User user);
         Boolean delete(Long id);
+        Optional<User> getOne(Long id);
 }

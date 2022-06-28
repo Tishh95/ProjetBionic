@@ -25,14 +25,27 @@
 <script src='./js/jquery-2.1.3.js'></script>
 
 <script>
-    let user_id
     function fill(){
-        let gClubs
+        let user_id = 3
         console.log('appel à la fonction fill()...')
-        user_id = 3
-        callWebService("/notes/list",null,notesOk, null, 'GET',1)
+        callWebService("/users/user/note/" + user_id  ,null,notesOk, null, 'GET',1)
         callWebService("/clubs/list",null,clubOk, null, 'GET',1)
     }
+    function notesOk(data, idx){
+        console.log('Retour Web Service cities')
+        let addNotes = ' ', bk = ''
+        for (k in data.notes) {
+            console.log(data.notes[k])
+            addNotes += '<div class="divNotes"> ' +
+                '<td >'+data.notes[k].title+'</td>' +
+                '</br>' +
+                '<td><a  onclick="displayOneClub('+k+')">'+data.notes[k].note+'</a></td>' +
+                '</div>' ;
+        }
+        document.getElementById('tabNotes').innerHTML += addNotes;
+
+    }
+
     function clubOk(data, idx) {
         let addClub = ' '
         for ( key in data ){
@@ -57,22 +70,7 @@
 
 
 
-    function notesOk(data, idx){
-        console.log('Retour Web Service cities')
-        console.log(data)
 
-        let line = ' ', bk = ''
-        for ( key in data ){
-                let city = data[key] ;
-                line += '<div class="divNotes"> ' +
-                    '<td class="itemsTitle">'+city.title+'</td>' +
-                    '</br>' +
-                    '<td><a  onclick="displayOneCity('+key+')">'+city.note+'</a></td>' +
-                    '</div>' ;
-        }
-        document.getElementById('tabNotes').innerHTML += line;
-
-    }
 </script>
 </body>
 </html>
