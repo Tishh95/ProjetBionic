@@ -70,4 +70,8 @@ public class UserServiceImpl implements UserService{
     public Optional<User> getOne(Long id) {
         return repository.findById(id);
     }
+
+    public User getUserbyLogin(String username, String password){
+        return repository.findByUsernameAndPassword(username,password);
+    }
 }
