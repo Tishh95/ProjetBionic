@@ -29,16 +29,15 @@
     let user_id = 3
     function fill(){
         console.log('appel à la fonction fill()...')
-        callWebService("/users/user/note/" + user_id  ,null,test, null, 'GET',1)
+        callWebService("/users/user/note/" + user_id ,notesOk, 'GET',1)
     }
-    function test(data) {
 
-    }
     function notesOk(data, idx){
-        gNotes= data.notes
-        console.log('Retour Web Service cities')
+        gNotes= data
+        console.log('Retour Web Service user')
 
         let addNotes = ' ', bk = ''
+        console.log(gNotes)
         for (k in data.notes) {
             console.log(gNotes[k])
             addNotes += '<div class="divNotes"> ' +
