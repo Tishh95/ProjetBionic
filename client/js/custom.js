@@ -181,6 +181,7 @@ function clearError(){
 function OnErrorStd(jqXHR, status, error)
 {
 	if ( jqXHR.responseText || status || error ){
+		console.log("je suis la hehe")
 		   document.getElementById('sysMsg').innerHTML += 'Error >>> ' + jqXHR.responseText + " - " + jqXHR.status + " - " + error ;
 	}
 }

@@ -26,43 +26,47 @@
 
     </form>
 
-</main>
-<script src="./js/custom.js"></script>
-<script src='./js/jquery-2.1.3.js'></script>
-<script>
-    function readWebService(){
-        const loginForm = document.getElementById("login-form");
-        const username = loginForm.username.value;
-        const password = loginForm.password.value;
-        console.log('appel à la fonction fill()...')
-        console.log(username)
-        console.log(password)
-        callWebService("/user/login_check/username=" + username + "&password=" + password, null, log, null, 'GET', 1)
-    }
-    function  log(){
-        alert("You have successfully logged in.");
-        console.log('test');
-    }
-    function loginCheck(data, idx){
-        console.log('logincheck');
-        const loginErrorMsg = document.getElementById("login-error-msg");
-        const id = data;
-        e.preventDefault();
-        const username = loginForm.username.value;
-        const password = loginForm.password.value;
-        let user_id = 3
-        console.log('appel login');
+    <script src="./js/custom.js"></script>
+    <script src='./js/jquery-2.1.3.js'></script>
+    <script>
+        function readWebService(){
+            const loginForm = document.getElementById("login-form");
+            const username = loginForm.username.value;
+            const password = loginForm.password.value;
+            console.log('appel à la fonction fill()...')
+            console.log(username)
+            console.log(password)
+            callWebService("/users/user/note/3"  ,null,log, null, 'GET',1)
 
+            //callWebService("/users/user/login_check/username=" + username + "&password=" + password, null, log, null, 'GET', 1)
+        }
+        function  log(data,idx){
 
-        if (username === "admin" && password=== "admin") {
+            console.log('test');
             alert("You have successfully logged in.");
-            location.reload();
-        } else {
-            loginErrorMsg.style.opacity = 1;
+        }
+        function loginCheck(data, idx){
+            console.log('logincheck');
+            const loginErrorMsg = document.getElementById("login-error-msg");
+            const id = data;
+            e.preventDefault();
+            const username = loginForm.username.value;
+            const password = loginForm.password.value;
+            let user_id = 3
+            console.log('appel login');
+
+
+            if (username === "admin" && password=== "admin") {
+                alert("You have successfully logged in.");
+                location.reload();
+            } else {
+                loginErrorMsg.style.opacity = 1;
+            }
+
         }
 
-    }
+    </script>
 
-</script>
+</main>
 </body>
 </html>
