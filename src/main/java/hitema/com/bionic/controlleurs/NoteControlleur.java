@@ -35,8 +35,8 @@ public class NoteControlleur {
     }
 
     @GetMapping("/user/{id}")
-    Note getByUser(@PathVariable("id") Long id){
-        log.trace("user Id :{}",id);
+    Note getById(@PathVariable("id") Long id){
+        log.trace("note Id :{}",id);
         return service.read(id);
     }
 

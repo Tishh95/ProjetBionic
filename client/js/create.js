@@ -48,6 +48,17 @@ function f9() {
     document.getElementById("textarea1").value = " ";
 }
 function create() {
-    console.log(document.getElementById("textarea1"));
-    callWebService()
+    const title = document.querySelector('input').value;
+    const content = document.querySelector('textarea').value;
+    console.log(title)
+    console.log(content)
+}
+
+function fill() {
+    console.log('appel à la fonction fill()...')
+    let note = getProp('note',true)
+
+    document.querySelector('input').value = note.title;
+    document.querySelector('textarea').value = note.note
+    console.log(note)
 }

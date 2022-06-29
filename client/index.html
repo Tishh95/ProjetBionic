@@ -32,13 +32,14 @@
         callWebService("/users/user/note/" + user_id  ,null,notesOk, null, 'GET',1)
     }
     function notesOk(data, idx){
-        gNotes= data
+        gNotes= data.notes
         console.log('Retour Web Service cities')
+
         let addNotes = ' ', bk = ''
         for (k in data.notes) {
-            console.log(data.notes)
+            console.log(gNotes[k])
             addNotes += '<div class="divNotes"> ' +
-                '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
+                '<td ><a  onclick="displayOneNote('+data.notes[k].id+')">'+data.notes[k].title+'</td>' +
                 '</br>' +
                 '<td>'+data.notes[k].note+'</td>' +
                 '</div></a>' +
@@ -72,9 +73,10 @@
         putProp('club',club,true)
         post('club.html')
     }
+
     function displayOneNote(id) {
         console.log('display')
-        let note = gNotes[key];
+        let note = gNotes[k];
         putProp('note',note,true)
         post('create.html')
     }
