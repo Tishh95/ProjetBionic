@@ -33,7 +33,7 @@
     }
     function notesOk(data, idx){
         gNotes= data
-        console.log('Retour Web Service cities')
+        console.log('Retour Web Service note')
         let addNotes = ' ', bk = ''
         for (k in data.notes) {
             console.log(data.notes)
@@ -48,6 +48,8 @@
             clubOk(data.clubs)
         }
         document.getElementById('tabNotes').innerHTML += addNotes;
+
+        console.log('fin notesOK')
 
     }
 

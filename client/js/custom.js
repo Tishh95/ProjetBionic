@@ -189,7 +189,7 @@ function OnErrorStd(jqXHR, status, error)
 function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, errorMethod)
 {
 
-
+	console.log("lancement web service")
 	if ( httpMethod === null ){
 		httpMethod = 'POST';
 	}
@@ -201,7 +201,7 @@ function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, 
 	var webServiceURL = webURL + wsURL ;
 	var params = wsParams ;
 	var token = 'Bearer ' + getProp('XToken') ;
-	
+	console.log("avant ajax")
     $.ajax({
 		// xhrFields: {
     	//     withCredentials: true
