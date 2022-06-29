@@ -29,12 +29,15 @@ button:hover {
 }
 
 textarea {
+    margin: 15px;
     padding: 3%;
     border-color: #957dad;
     border-width: thick;
 }
 
+
 .flex-box {
+    margin-top: 2%;
     display: flex;
     justify-content: center;
 }

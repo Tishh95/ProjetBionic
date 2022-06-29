@@ -30,6 +30,7 @@ public class User {
     @Column(name="date_create")
     private LocalDateTime creationDate;
 
+    @JsonIgnore
     @OneToMany( targetEntity=Note.class, mappedBy = "user")
     private List<Note> notes = new ArrayList<>();
 

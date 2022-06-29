@@ -47,3 +47,31 @@ function f9() {
     document.getElementById("textarea1").style.textTransform = "capitalize";
     document.getElementById("textarea1").value = " ";
 }
+let userid
+function create() {
+    let note = [
+    {
+        "title": document.querySelector('input').value,
+        "content": document.querySelector('textarea').value,
+    }
+    ]
+    const title = document.querySelector('input').value;
+    const content = document.querySelector('textarea').value;
+    console.log(title)
+    console.log(content)
+    console.log(userid)
+    callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,null,r, null, 'GET',1)
+}
+function fill() {
+    console.log('appel à la fonction fill()...')
+    let note = getProp('note',true)
+    userid = getProp('userid',false)
+    document.querySelector('input').value = note.title;
+    document.querySelector('textarea').value = note.note
+}
+function fillcreate(){
+    userid = getProp('userid',false)
+}
+function r(data){
+    console.log(data)
+}

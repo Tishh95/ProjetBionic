@@ -26,19 +26,23 @@
 <script src='./js/jquery-2.1.3.js'></script>
 
 <script>
+    let user_id = 3
     function fill(){
-        let user_id = 3
         console.log('appel à la fonction fill()...')
-        callWebService("/users/user/note/" + user_id  ,null,notesOk, null, 'GET',1)
+        callWebService("/users/user/note/" + user_id  ,null,test, null, 'GET',1)
+    }
+    function test(data) {
+
     }
     function notesOk(data, idx){
-        gNotes= data
+        gNotes= data.notes
         console.log('Retour Web Service cities')
+
         let addNotes = ' ', bk = ''
         for (k in data.notes) {
-            console.log(data.notes)
+            console.log(gNotes[k])
             addNotes += '<div class="divNotes"> ' +
-                '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
+                '<td ><a  onclick="displayOneNote('+data.notes[k].id+')">'+data.notes[k].title+'</td>' +
                 '</br>' +
                 '<td>'+data.notes[k].note+'</td>' +
                 '</div></a>' +
@@ -72,11 +76,13 @@
         putProp('club',club,true)
         post('club.html')
     }
+
     function displayOneNote(id) {
         console.log('display')
-        let note = gNotes[key];
+        let note = gNotes[k];
         putProp('note',note,true)
-        post('create.html')
+        putProp('userid',user_id,false)
+        post('changeNote.html')
     }
     function drop(id) {
         callWebService("/notes/note/drop/"+ id  ,null,deleteOk, null, 'GET',1)
