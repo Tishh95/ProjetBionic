@@ -60,7 +60,7 @@ function create() {
     console.log(title)
     console.log(content)
     console.log(userid)
-    callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,null,r, null, 'GET',1)
+    callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,r,'GET',1)
 }
 function fill() {
     console.log('appel à la fonction fill() de changeNote')

@@ -19,7 +19,9 @@
         Your Clubs
         <a href='create.html' style="float: right"> créer un club</a>
     </div>
+    <div id="tabbionic">
 
+    </div>
 </div>
 
 <script src="./js/custom.js"></script>
@@ -33,14 +35,14 @@
     }
 
     function notesOk(data, idx){
-        gNotes= data
+        gNotes= data.notes
         console.log('Retour Web Service user')
         let addNotes = ' ', bk = ''
         console.log(data.notes)
         for (k in data.notes) {
-            console.log(gNotes.notes[k])
+            console.log(data.notes[k])
             addNotes += '<div class="divNotes"> ' +
-                '<td ><a  onclick="displayOneNote('+data.notes[k]+')">'+data.notes[k].title+'</td>' +
+                '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
                 '</br>' +
                 '<td>'+data.notes[k].note+'</td>' +
                 '</div></a>' +
@@ -76,12 +78,10 @@
     }
 
     function displayOneNote(id) {
-        console.log('display')
-        console.log(id)
+        let note = gNotes[id];
         putProp('note',note,true)
         putProp('userid',user_id,false)
-        console.log(note)
-        post('changeNote.html')
+        post('watchNote.html')
     }
     function drop(id) {
         callWebService("/notes/note/drop/"+ id  ,null,deleteOk, null, 'GET',1)
