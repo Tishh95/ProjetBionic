@@ -42,11 +42,11 @@
         for (k in data.notes) {
             console.log(data.notes[k])
             addNotes += '<div class="divNotes"> ' +
-                '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
+                '<div class="alltext"><div class="noteTitle"><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</div>' +
                 '</br>' +
                 '<td>'+data.notes[k].note+'</td>' +
-                '</div></a>' +
-                '<button onclick="drop('+data.notes[k].id+')"> delete</button>';
+                '</a></div>' +
+                '<button class="delete" onclick="drop('+data.notes[k].id+')"> delete</button> </div>';
         }
         if(data.clubs.length > 0) {
             clubOk(data.clubs)
