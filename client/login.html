@@ -37,17 +37,21 @@
         console.log('appel à la fonction fill()...')
         console.log(username)
         console.log(password)
-        callWebService("/users/user/login_check/" + username.toString() + "/" + password.toString(), null, loginCheck, null, 'GET', 1)
+        callWebService("/user/login_check/username=" + username + "&password=" + password, null, log, null, 'GET', 1)
+    }
+    function  log(){
+        alert("You have successfully logged in.");
+        console.log('test');
     }
     function loginCheck(data, idx){
-        console.log('logincheck')
+        console.log('logincheck');
         const loginErrorMsg = document.getElementById("login-error-msg");
         const id = data;
         e.preventDefault();
         const username = loginForm.username.value;
         const password = loginForm.password.value;
         let user_id = 3
-        console.log('appel login')
+        console.log('appel login');
 
 
         if (username === "admin" && password=== "admin") {

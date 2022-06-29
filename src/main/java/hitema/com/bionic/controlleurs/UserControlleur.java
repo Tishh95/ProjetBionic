@@ -41,7 +41,7 @@ public class UserControlleur {
         return service.getOne(id);
     }
 
-    @GetMapping("/user/login_check/{username}/{password}")
+    @GetMapping("/user/login_check/username={username}&password={password}")
     long getLoginFromLogin(@PathVariable("username") String username,@PathVariable("password") String password){
         log.trace("user username :{}",username);
         log.trace("user password :{}",password);

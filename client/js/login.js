@@ -14,7 +14,7 @@ loginButton.addEventListener("click", (e) => {
     const password = loginForm.password.value;
 
     console.log('chercher si aucun log existe()...')
-        callWebService("/user/login_check/" + username + "/" + password, null, log, null, 'GET', 1)
+        callWebService("/user/login_check/username=" + username + "&password=" + password, null, log, null, 'GET', 1)
 
 
     })
