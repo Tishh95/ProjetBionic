@@ -47,6 +47,7 @@ function f9() {
     document.getElementById("textarea1").style.textTransform = "capitalize";
     document.getElementById("textarea1").value = " ";
 }
+let userid
 function create() {
     let note = [
     {
@@ -58,17 +59,19 @@ function create() {
     const content = document.querySelector('textarea').value;
     console.log(title)
     console.log(content)
-    callWebService("/notes/note/create/" +title+"/"+content,null,r, null, 'GET',1)
+    console.log(userid)
+    callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,null,r, null, 'GET',1)
 }
 function fill() {
     console.log('appel à la fonction fill()...')
     let note = getProp('note',true)
-
+    userid = getProp('userid',false)
     document.querySelector('input').value = note.title;
     document.querySelector('textarea').value = note.note
-    console.log(note)
 }
-
+function fillcreate(){
+    userid = getProp('userid',false)
+}
 function r(data){
     console.log(data)
 }

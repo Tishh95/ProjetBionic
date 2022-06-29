@@ -3,6 +3,7 @@ package hitema.com.bionic.controlleurs;
 
 import hitema.com.bionic.entity.Note;
 import hitema.com.bionic.services.NoteService;
+import hitema.com.bionic.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,14 @@ public class NoteControlleur {
     private static final Logger log = LoggerFactory.getLogger(UserControlleur.class);
 
     private NoteService service;
+    private UserService Userservice;
 
-    public NoteControlleur(NoteService service) {
+    public NoteControlleur(NoteService service, UserService userservice) {
         this.service = service;
+        this.Userservice = userservice;
     }
+
+
 
     @GetMapping({"","/list"})
     List<Note> getAll(){
@@ -47,8 +52,13 @@ public class NoteControlleur {
     }
 
 
-    @GetMapping("/note/create/{title}/{content}")
-    String createNote(@PathVariable("title") String title, @PathVariable("content")String content){
+    @GetMapping("/note/create/{title}/{content}/{userid}")
+    String createNote(@PathVariable("title") String title, @PathVariable("content")String content, @PathVariable("userid")Long userid){
+        Note note = new Note();
+        note.setTitle(title);
+        note.setNote(content);
+        note.setUser(Userservice.read(userid));
+        service.create(note);
         return title + " " + content;
     }
 }
