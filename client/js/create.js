@@ -63,9 +63,10 @@ function create() {
     callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,null,r, null, 'GET',1)
 }
 function fill() {
-    console.log('appel à la fonction fill()...')
+    console.log('appel à la fonction fill() de changeNote')
     let note = getProp('note',true)
     userid = getProp('userid',false)
+    console.log(note)
     document.querySelector('input').value = note.title;
     document.querySelector('textarea').value = note.note
 }

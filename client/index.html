@@ -35,13 +35,12 @@
     function notesOk(data, idx){
         gNotes= data
         console.log('Retour Web Service user')
-
         let addNotes = ' ', bk = ''
-        console.log(gNotes)
+        console.log(data.notes)
         for (k in data.notes) {
-            console.log(gNotes[k])
+            console.log(gNotes.notes[k])
             addNotes += '<div class="divNotes"> ' +
-                '<td ><a  onclick="displayOneNote('+data.notes[k].id+')">'+data.notes[k].title+'</td>' +
+                '<td ><a  onclick="displayOneNote('+data.notes[k]+')">'+data.notes[k].title+'</td>' +
                 '</br>' +
                 '<td>'+data.notes[k].note+'</td>' +
                 '</div></a>' +
@@ -78,9 +77,10 @@
 
     function displayOneNote(id) {
         console.log('display')
-        let note = gNotes[k];
+        console.log(id)
         putProp('note',note,true)
         putProp('userid',user_id,false)
+        console.log(note)
         post('changeNote.html')
     }
     function drop(id) {
