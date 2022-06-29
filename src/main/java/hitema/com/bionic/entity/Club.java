@@ -1,5 +1,7 @@
 package hitema.com.bionic.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,9 +22,10 @@ public class Club {
     private LocalDateTime creationDate;
 
     @ManyToMany
-    @JoinTable( name = "user_club",
-            joinColumns = @JoinColumn( name = "user_id" ),
-            inverseJoinColumns = @JoinColumn( name = "club_id" ) )
+        @JoinTable( name = "user_club",
+            joinColumns = @JoinColumn( name = "club_id" ),
+            inverseJoinColumns = @JoinColumn( name = "user_id" ) )
+    @JsonIgnore
     private List<User> users = new ArrayList<>();
 
     @OneToMany(targetEntity=Note.class, mappedBy = "user")
