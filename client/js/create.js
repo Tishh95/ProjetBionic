@@ -48,12 +48,18 @@ function f9() {
     document.getElementById("textarea1").value = " ";
 }
 function create() {
+    let note = [
+    {
+        "title": document.querySelector('input').value,
+        "content": document.querySelector('textarea').value,
+    }
+    ]
     const title = document.querySelector('input').value;
     const content = document.querySelector('textarea').value;
     console.log(title)
     console.log(content)
+    callWebService("/notes/note/create/" +title+"/"+content,null,r, null, 'GET',1)
 }
-
 function fill() {
     console.log('appel à la fonction fill()...')
     let note = getProp('note',true)
@@ -61,4 +67,8 @@ function fill() {
     document.querySelector('input').value = note.title;
     document.querySelector('textarea').value = note.note
     console.log(note)
+}
+
+function r(data){
+    console.log(data)
 }
