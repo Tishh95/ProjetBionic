@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body onload="fill()">
-
+<div id="title">
+</div>
 <div id="text">
 
 </div>
@@ -43,7 +44,11 @@
         console.log('appel à la fonction fill() de changeNote')
         let note = getProp('note',true)
         userid = getProp('userid',false)
-        console.log(note)
+
+        const container = document.getElementById('title');
+        console.log(note.title)
+        const text = document.createTextNode(note.title);
+        container.appendChild(text);
         check(note.note)
     }
 </script>
