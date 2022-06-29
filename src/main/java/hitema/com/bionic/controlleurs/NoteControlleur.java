@@ -45,4 +45,9 @@ public class NoteControlleur {
         log.trace("user Id :{}",id);
         service.delete(id);
     }
+    @GetMapping("/note/create/{id}")
+    Long createNote(@PathVariable("id") Long id){
+        log.trace("user Id :{}",id);
+        return id;
+    }
 }
