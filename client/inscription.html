@@ -4,23 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <link rel="stylesheet" href="css/login.css">
-    <script defer src="js/login.js"></script>
+    <title>S'enregistrer</title>
+    <link rel="stylesheet" href="css/inscription.css">
+    <script defer src="js/inscription.js"></script>
 </head>
 
 <body>
-<main id="main-holder">
-    <h1 id="login-header">Inscription</h1>
+<main id="main-holder-subscribe">
+    <h1 id="subscribe-header">S'enregistrer</h1>
 
-    <div id="login-error-msg-holder">
-        <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    <div id="subscribe-error-msg-holder">
+        <p id="subscribe-error-msg">Invalid username <span id="error-msg-second-line-subscribe">and/or password</span></p>
     </div>
 
-    <form id="login-form">
-        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-        <input type="submit" value="Login" id="login-form-submit">
+    <form id="subscribe-form">
+        <input type="text" name="username" id="username-field" class="subscribe-form-field" placeholder="Username">
+        <input type="password" name="password" id="password-field" class="subscribe-form-field" placeholder="Password">
+        <input type="submit" value="Créer un compte" id="subscribe-form-submit">
+        <input type="button" class="button_active"  value="Déjà un compte?" id="login-page"  onclick="location.href='login.html';" />
     </form>
 
 </main>
