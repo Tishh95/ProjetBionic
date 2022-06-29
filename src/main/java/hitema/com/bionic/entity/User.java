@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
     @Table(name = "user")
@@ -21,7 +22,7 @@ public class User {
     private List<Club> clubs = new ArrayList<>();
 
     @Column(name="username")
-    private String name;
+    private String username;
     @Column(name="Password")
     private String password;
     @Column(name="date_create")
@@ -39,11 +40,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return username;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.username = name;
     }
 
     public List<Club> getClubs() {
@@ -74,7 +75,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", creationDate=" + creationDate +
                 '}';
