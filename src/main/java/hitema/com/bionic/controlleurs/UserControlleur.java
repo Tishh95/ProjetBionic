@@ -36,9 +36,9 @@ public class UserControlleur {
         return "test id";
     }
     @GetMapping("/user/note/{id}")
-    Optional<User> getNotes(@PathVariable("id") Long id){
+    User getNotes(@PathVariable("id") Long id){
         log.trace("user Id :{}",id);
-        return service.getOne(id);
+        return service.read(id);
     }
 
 }
