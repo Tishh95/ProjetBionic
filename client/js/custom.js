@@ -181,12 +181,14 @@ function clearError(){
 function OnErrorStd(jqXHR, status, error)
 {
 	if ( jqXHR.responseText || status || error ){
+		console.log("je suis la hehe")
 		   document.getElementById('sysMsg').innerHTML += 'Error >>> ' + jqXHR.responseText + " - " + jqXHR.status + " - " + error ;
 	}
 }
 
-function callWebService(wsURL,successMethod,httpMethod,index, errorMethod)
+function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, errorMethod)
 {
+
 
 	if ( httpMethod === null ){
 		httpMethod = 'POST';
@@ -197,6 +199,7 @@ function callWebService(wsURL,successMethod,httpMethod,index, errorMethod)
 	}
 	
 	var webServiceURL = webURL + wsURL ;
+	var params = wsParams ;
 	var token = 'Bearer ' + getProp('XToken') ;
 	
     $.ajax({
@@ -208,7 +211,8 @@ function callWebService(wsURL,successMethod,httpMethod,index, errorMethod)
     	    request.setRequestHeader("Authorization", token);
 			request.setRequestHeader("Access-Control-Allow-Credentials", true);
     	},
-        url: webServiceURL,
+        url: webServiceURL, 
+        data: params ,
         type: httpMethod ,
         // dataType: 'json',
         // contentType: "application/json; charset=utf-8",
