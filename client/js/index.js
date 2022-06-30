@@ -8,10 +8,9 @@ function fill(){
 }
 function notesOk(data, idx){
     gNotes= data.notes
-    console.log('Retour Web Service cities')
+    console.log('Retour Web Service users')
     let addNotes = ' ', bk = ''
     for (k in data.notes) {
-        console.log(data.notes)
         addNotes += '<div class="divNotes"> ' +
             '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
             '</br>' +
@@ -39,7 +38,6 @@ function clubOk(data) {
     }
     document.getElementById('tabClubs').innerHTML += addClub;
 }
-
 function displayOneClub(id) {
     console.log('display')
     let club = gClubs[id];
@@ -62,7 +60,6 @@ function deleteOk() {
     clearBox()
     fill()
 }
-
 function opencreate() {
     console.log('display')
     let user =user_id;
