@@ -45,7 +45,7 @@ public class UserControlleur {
     long getLoginFromLogin(@PathVariable("username") String username,@PathVariable("password") String password){
         log.trace("user username :{}",username);
         log.trace("user password :{}",password);
-        username = String.valueOf(username.hashCode());
+        password = String.valueOf(password.hashCode());
         return service.getUserbyLogin(username,password).getId();
     }
 
