@@ -1,7 +1,10 @@
+let user_id
 function fill(){
-    let user_id = 3
+
+    user_id = getProp('idUser',true)
     console.log('appel à la fonction fill()...')
-    callWebService("/users/user/note/" + user_id  ,notesOk, 'GET',1)
+    console.log(user_id)
+    callWebService("/users/user/" + user_id  ,notesOk, 'GET',1)
 }
 function notesOk(data, idx){
     gNotes= data.notes
@@ -41,11 +44,14 @@ function displayOneClub(id) {
     console.log('display')
     let club = gClubs[key];
     putProp('club',club,true)
+    console.log(user_id)
+    putProp('userid',user_id,false)
     post('club.html')
+
 }
 function displayOneNote(id) {
     console.log('display')
-    let note = gNotes[k];
+    let note = gNotes[id];
     putProp('note',note,true)
     post('watchNote.html')
 }
