@@ -28,7 +28,7 @@ public class Club {
     @JsonIgnore
     private List<User> users = new ArrayList<>();
 
-    @OneToMany(targetEntity=Note.class, mappedBy = "user")
+    @OneToMany(targetEntity=Note.class, mappedBy = "club")
     private List<Note> notes = new ArrayList<>();
 
     public String getName() {
