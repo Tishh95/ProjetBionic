@@ -181,15 +181,13 @@ function clearError(){
 function OnErrorStd(jqXHR, status, error)
 {
 	if ( jqXHR.responseText || status || error ){
-		console.log("je suis la hehe")
 		   document.getElementById('sysMsg').innerHTML += 'Error >>> ' + jqXHR.responseText + " - " + jqXHR.status + " - " + error ;
 	}
 }
 
-function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, errorMethod)
+function callWebService(wsURL,successMethod,httpMethod,index, errorMethod)
 {
 
-	console.log("lancement web service")
 	if ( httpMethod === null ){
 		httpMethod = 'POST';
 	}
@@ -199,9 +197,8 @@ function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, 
 	}
 	
 	var webServiceURL = webURL + wsURL ;
-	var params = wsParams ;
 	var token = 'Bearer ' + getProp('XToken') ;
-	console.log("avant ajax")
+	
     $.ajax({
 		// xhrFields: {
     	//     withCredentials: true
@@ -211,8 +208,7 @@ function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, 
     	    request.setRequestHeader("Authorization", token);
 			request.setRequestHeader("Access-Control-Allow-Credentials", true);
     	},
-        url: webServiceURL, 
-        data: params ,
+        url: webServiceURL,
         type: httpMethod ,
         // dataType: 'json',
         // contentType: "application/json; charset=utf-8",
@@ -221,7 +217,7 @@ function callWebService(wsURL,wsParams,successMethod,progress,httpMethod,index, 
         	successMethod(data,index);
         }, 
         error:  function(error,status,err) {
-			errorMethod(error,status,err);
+        	OnErrorStd(error,status,err);
         }, 
     });
     
