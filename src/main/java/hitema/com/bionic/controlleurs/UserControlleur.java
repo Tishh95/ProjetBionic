@@ -1,6 +1,6 @@
 package hitema.com.bionic.controlleurs;
 
-
+import hitema.com.bionic.repositories.UserRepository;
 import hitema.com.bionic.entity.User;
 import hitema.com.bionic.services.UserService;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public class UserControlleur {
     private static final Logger log = LoggerFactory.getLogger(UserControlleur.class);
 
     private UserService service;
-
+    private UserRepository repository;
     public UserControlleur(UserService service) {
         this.service = service;
     }
@@ -35,11 +35,6 @@ public class UserControlleur {
         service.read(id);
         return "test id";
     }
-    @GetMapping("/user/note/{id}")
-    User getNotes(@PathVariable("id") Long id){
-        log.trace("user Id :{}",id);
-        return service.read(id);
-    }
 
     @GetMapping("/user/login_check/username={username}&password={password}")
     long getLoginFromLogin(@PathVariable("username") String username,@PathVariable("password") String password){
@@ -47,5 +42,19 @@ public class UserControlleur {
         log.trace("user password :{}",password);
         return service.getUserbyLogin(username,password).getId();
     }
+    @GetMapping("/user/subscribe/username={username}&password={password}")
+    long createUser(@PathVariable("username") String username,@PathVariable("password") String password){
+        if (repository.existsByUsername(username)){
+            return 0;
+        }
+        else {
+            User user = new User();
+            user.setName(username);
+            user.setPassword(password);
+            service.create(user);
+            return 1;
+        }
+    }
+
 
 }

@@ -11,7 +11,7 @@ loginButton.addEventListener("click", (e) => {
     try {
         //callwebservice et vas voir si une paire username/password existe
         //si il en existe une ça se connecte sinon message d'erreur
-        callWebService("/users/user/login_check/username=" + username.toString() + "&password=" + password.toString(), null, connectionSuccess, null, 'GET', 1, connectionFailed)
+        callWebService("/users/user/login_check/username=" + username.toString() + "&password=" + password.toString(), connectionSuccess, 'GET', 1, connectionFailed)
     }catch (e) {
         console.error(e);
         console.log("error")

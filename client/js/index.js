@@ -1,7 +1,7 @@
 function fill(){
     let user_id = 3
     console.log('appel à la fonction fill()...')
-    callWebService("/users/user/note/" + user_id  ,null,notesOk, null, 'GET',1)
+    callWebService("/users/user/note/" + user_id  ,notesOk, 'GET',1)
 }
 function notesOk(data, idx){
     gNotes= data.notes
