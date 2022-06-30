@@ -26,7 +26,8 @@ loginButton.addEventListener("click", (e) => {
         //connexion passage a la page index en envoyant l'id
         console.log("logged successfully")
         alert("You have successfully logged in.");
-        location.href('index.html')
+        putProp('idUser',data,false)
+        document.location.href="./index.html";
     }
 })
 
