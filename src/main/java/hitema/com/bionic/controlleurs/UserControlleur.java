@@ -29,10 +29,9 @@ public class UserControlleur {
 
 
     @GetMapping("/user/{id}")
-    String getOne(@PathVariable("id") Long id){
+    User getOne(@PathVariable("id") Long id){
         log.trace("user Id :{}",id);
-        service.read(id);
-        return "test id";
+        return service.read(id);
     }
 
     @GetMapping("/user/login_check/username={username}&password={password}")
