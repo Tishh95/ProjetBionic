@@ -74,6 +74,7 @@ function fill() {
 function fillcreate(){
     userid = getProp('user',false)
     console.log(userid)
+    console.log('fillcreate')
 }
 function r(data){
     console.log(data)

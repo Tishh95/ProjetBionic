@@ -11,12 +11,18 @@ function notesOk(data, idx){
     console.log('Retour Web Service users')
     let addNotes = ' ', bk = ''
     for (k in data.notes) {
-        addNotes += '<div class="divNotes"> ' +
-            '<td ><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</td>' +
-            '</br>' +
-            '<td>'+data.notes[k].note+'</td>' +
+        addNotes +=
+            '<div class="container">'+
+            '<div class="row hidden-md-up">'+
+            '<div class="col-md-4">'+
+            '<div class="card ">' +
+            '<div class="card-block">' +
+            '<div class="divNotes"><a  onclick="displayOneNote('+k+')"> ' +
+            '<h4  class="card-title"> '+data.notes[k].title+'</h4>' +
+            '<div class="card-text p-y-1">'+data.notes[k].note+'</div>' +
             '</div></a>' +
-            '<button onclick="drop('+data.notes[k].id+')"> delete</button>';
+            '<button onclick="drop('+data.notes[k].id+')"> delete</button>' +
+            '</div></div></div></div></div>'
     }
     if(data.clubs.length > 0) {
         clubOk(data.clubs)
@@ -30,11 +36,18 @@ function clubOk(data) {
         gClubs= data
         let club = data[key] ;
         console.log(club)
-        addClub += '<div class="divNotes"> ' +
-            '<td >'+club.name+'</td>' +
-            '</br>' +
-            '<td><a  onclick="displayOneClub('+key+')">'+club.creationDate+'</a></td>' +
-            '</div>' ;
+        addClub +=  '<div class="container">'+
+            '<div class="row hidden-md-up">'+
+            '<div class="col-md-10">'+
+            '<div class="card ">' +
+            '<div class="card-block">' +
+            '<div style="text-align: center" class="divNotes"><a onclick="displayOneClub('+key+')"> ' +
+            '<h4  class="card-title"> '+club.name+'</h4>' +
+            '<div class="card-text p-y-1">'+club.creationDate+'</div>' +
+            '</div></a>' +
+            '</div></div></div></div></div>';
+
+
     }
     document.getElementById('tabClubs').innerHTML += addClub;
 }
