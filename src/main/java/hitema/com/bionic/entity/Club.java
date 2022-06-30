@@ -31,6 +31,9 @@ public class Club {
     @OneToMany(targetEntity=Note.class, mappedBy = "user")
     private List<Note> notes = new ArrayList<>();
 
+    public void addAdmin(User user) {
+        this.users.add(user);
+    }
     public String getName() {
         return name;
     }
@@ -70,5 +73,6 @@ public class Club {
     public List<Note> getNotes(){
         return notes;
     }
+
 
 }

@@ -86,3 +86,9 @@ function clearBox() {
         div.removeChild(div.firstChild);
     }
 }
+function opencreateClub() {
+    console.log('display')
+    let user =user_id;
+    putProp('user',user,false)
+    post('createClub.html')
+}
