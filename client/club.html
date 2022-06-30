@@ -2,19 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/index.css">
+
     <title>Title</title>
 </head>
 <body onload="fill()">
 
+<div class="flex-container">
+
+
+
+    <div id="notesList" class="flex-child">
+        <div id ='addPerson'>
+
+        </div>
+    </div>
+
+    <div id="userList" class="flex-child-two">
+        <div id ='addNote'>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script src="./js/custom.js"></script>
 <script src='./js/jquery-2.1.3.js'></script>
-<script>
-    function fill(){
-        console.log('appel à la fonction fill()...')
-        let club = getProp('club',true)
+<script src='./js/club.js'></script>
 
-        console.log(club)
-    }
-</script>
 </body>
 </html>

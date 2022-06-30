@@ -217,7 +217,7 @@ function callWebService(wsURL,successMethod,httpMethod,index, errorMethod)
         	successMethod(data,index);
         }, 
         error:  function(error,status,err) {
-        	OnErrorStd(error,status,err);
+			errorMethod(error,status,err);
         }, 
     });
     

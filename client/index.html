@@ -3,95 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>bionic</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body  onload="fill()">
 
-<div class="flex-container">
+<h1 style="text-align: center"> BIONIC READER </h1>
+<div  class="flex-container">
 
-    <div id="tabNotes" class="flex-child">
-        Your notes
-        <a href='create.html' style="float: right"> Create</a>
-
+    <div  id="tabNotes" class="flex-child">
+        <a onclick="opencreate()" style="float: right"> créer une note</a>   Your notes
     </div>
 
     <div id="tabClubs" class="flex-child-two">
         Your Clubs
         <a href='create.html' style="float: right"> créer un club</a>
     </div>
-    <div id="tabbionic">
 
-    </div>
 </div>
 
 <script src="./js/custom.js"></script>
 <script src='./js/jquery-2.1.3.js'></script>
-
-<script>
-    let user_id = 3
-    function fill(){
-        console.log('appel à la fonction fill()...')
-        callWebService("/users/user/note/" + user_id ,notesOk, 'GET',1)
-    }
-
-    function notesOk(data, idx){
-        gNotes= data.notes
-        console.log('Retour Web Service user')
-        let addNotes = ' ', bk = ''
-        console.log(data.notes)
-        for (k in data.notes) {
-            console.log(data.notes[k])
-            addNotes += '<div class="divNotes"> ' +
-                '<div class="alltext"><div class="noteTitle"><a  onclick="displayOneNote('+k+')">'+data.notes[k].title+'</div>' +
-                '</br>' +
-                '<td>'+data.notes[k].note+'</td>' +
-                '</a></div>' +
-                '<button class="delete" onclick="drop('+data.notes[k].id+')"> delete</button> </div>';
-        }
-        if(data.clubs.length > 0) {
-            clubOk(data.clubs)
-        }
-        document.getElementById('tabNotes').innerHTML += addNotes;
-
-    }
-
-    function clubOk(data) {
-        let addClub = ' '
-        for ( key in data ){
-            gClubs= data
-            let club = data[key] ;
-            console.log(club)
-            addClub += '<div class="divNotes"> ' +
-                '<td >'+club.name+'</td>' +
-                '</br>' +
-                '<td><a  onclick="displayOneClub('+key+')">'+club.creationDate+'</a></td>' +
-                '</div>' ;
-        }
-        document.getElementById('tabClubs').innerHTML += addClub;
-    }
-
-    function displayOneClub(id) {
-        console.log('display')
-        let club = gClubs[key];
-        putProp('club',club,true)
-        post('club.html')
-    }
-
-    function displayOneNote(id) {
-        let note = gNotes[id];
-        putProp('note',note,true)
-        putProp('userid',user_id,false)
-        post('watchNote.html')
-    }
-    function drop(id) {
-        callWebService("/notes/note/drop/"+ id  ,null,deleteOk, null, 'GET',1)
-    }
-    function deleteOk() {
-        fill()
-    }
+<script src='./js/index.js'></script>
 
 
-
-</script>
 </body>
 </html>
