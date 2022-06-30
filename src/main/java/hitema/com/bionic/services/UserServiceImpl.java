@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService{
     public User create(User user) {
         if(user.getCreationDate() == null)
             user.setCreationDate(LocalDateTime.now());
+        user.setPassword(String.valueOf(user.getPassword().hashCode()));
         return repository.save(user);
     }
 
@@ -66,10 +67,6 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    @Override
-    public Optional<User> getOne(Long id) {
-        return repository.findById(id);
-    }
 
     public User getUserbyLogin(String username, String password){
         //hashage a faire après
