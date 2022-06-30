@@ -46,6 +46,10 @@ public class UserControlleur {
 
         return service.createUser(username,password);
     }
+    @RequestMapping("/inscription")
+    String inscription() {
+        return "redirect:/inscription.html";
+    }
 
 
 }
