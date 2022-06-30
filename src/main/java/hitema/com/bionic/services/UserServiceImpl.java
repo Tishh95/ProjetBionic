@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public User getUserbyLogin(String username, String password){
+        //hashage a faire après
         return repository.findByUsernameAndPassword(username,password);
     }
 }
