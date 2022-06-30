@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -40,5 +41,21 @@ public class ClubControlleur {
     @GetMapping("/userclub")
     List<User> GetAllUser(){
         return Userservice.readAll();
+    }
+
+
+    @GetMapping("/create/{name}/{admin}")
+    Club createClub(@PathVariable("name") String name,@PathVariable("admin") Long admin){
+        Club club = new Club();
+        club.setName(name);
+        club.setCreatorId(admin);
+        LocalDateTime ldt = LocalDateTime.now();;
+        club.setCreationDate(ldt );
+
+
+        club = service.create(club);
+        Userservice.read(admin);
+        club.addAdmin(Userservice.read(admin));
+        return service.create(club);
     }
 }

@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body onload="fill()">
+<p> choisir nom du club</p>
+<input id="textareatitle"
+       class="input shadow"
+       name="name"
+       rows="1"
+       cols="100"
+       maxlength="50"
+       placeholder="title">
 
+<button type="button"
+        onclick="create()"
+        class="btn shadow-sm btn-outline-primary side"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Tooltip on top">
+    Create</button>
+
+<script src="./js/createClub.js"></script>
+<script src="./js/custom.js"></script>
+<script src='./js/jquery-2.1.3.js'></script>
 </body>
 </html>

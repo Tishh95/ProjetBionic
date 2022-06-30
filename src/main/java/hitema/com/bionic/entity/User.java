@@ -32,7 +32,9 @@ public class User {
 
     @OneToMany( targetEntity=Note.class, mappedBy = "user")
     private List<Note> notes = new ArrayList<>();
-
+    public void addClub(Club club) {
+        this.clubs.add(club);
+    }
     public long getId() {
         return id;
     }
