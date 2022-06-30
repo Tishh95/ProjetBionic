@@ -1,5 +1,6 @@
 let club
 let addPerson = ' '
+let addNote = ' '
 function fill() {
     console.log('appel à la fonction fill()...')
     club = getProp('club',true)
@@ -8,6 +9,7 @@ function fill() {
     console.log(userid)
     console.log(club)
     callWebService("/clubs/userclub/",clubOk, 'GET',1)
+    callWebService("/notes/list", noteOk, 'GET',1)
 }
 
 function clubOk(data) {
@@ -32,4 +34,20 @@ function clubOk(data) {
     }
     document.getElementById('userList').innerHTML += addPerson;
 
+}
+
+function noteOk(data) {
+    let notes = []
+    for(i in data) {
+        if(data[i].club_id == club.id) {
+            notes.push(data[i])
+        }
+    }
+    for(k in notes){
+        addPerson += '<div class="divNotes"> ' +
+            '</br>' +
+            '<td>'+notes[k].title+'</td>' +
+            '</div></a>'
+    }
+    document.getElementById('notesList').innerHTML += addNote;
 }
