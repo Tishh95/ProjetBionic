@@ -78,4 +78,5 @@ function fillcreate(){
 }
 function r(data){
     console.log(data)
+    post('index.html')
 }

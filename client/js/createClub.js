@@ -16,4 +16,5 @@ function create() {
 
 function createOk(data) {
     console.log(data)
+    post('index.html')
 }

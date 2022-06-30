@@ -92,3 +92,8 @@ function opencreateClub() {
     putProp('user',user,false)
     post('createClub.html')
 }
+
+function deco() {
+    user_id = null;
+    post('login.html')
+}
