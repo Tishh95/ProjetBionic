@@ -47,13 +47,18 @@ function noteOk(data) {
             notes.push(data[i])
         }
     }
-    for(k in notes){
-        addNote += '<div class="divNotes"> ' +
-            '</br>' +
-            '<td><a  onclick="displayOneNote('+k+')">'+notes[k].title+'</td>' + '</br>' +
-            '<td>'+notes[k].note+'</td>' +
-            '</div></a>'
+    if (notes.length > 0) {
+        for(k in notes){
+            addNote += '<div class="divNotes"> ' +
+                '</br>' +
+                '<td><a  onclick="displayOneNote('+k+')">'+notes[k].title+'</td>' + '</br>' +
+                '<td>'+notes[k].note+'</td>' +
+                '</div></a>'
+        }
+    } else {
+        addNote += '<div class="divNotes"> Aucune note disponible pour ce groupe </div>'
     }
+
     document.getElementById('notesList').innerHTML += addNote;
 }
 
