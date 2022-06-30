@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService{
     public User create(User user) {
         if(user.getCreationDate() == null)
             user.setCreationDate(LocalDateTime.now());
+        user.setPassword(String.valueOf(user.getPassword().hashCode()));
         return repository.save(user);
     }
 
