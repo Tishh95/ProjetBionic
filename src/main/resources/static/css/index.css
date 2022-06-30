@@ -25,3 +25,28 @@
     height: 100%;
 }
 
+.divNotes{
+    width: 100%;
+    margin: 3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    border-radius: 10px;
+}
+
+
+.divNotes:Hover{
+    background-color: grey;
+}
+.delete {
+    float: right;
+}
+.noteTitle {
+    font-size: 20px;
+}
+.alltext {
+    width: 90%;
+    float: left;
+}

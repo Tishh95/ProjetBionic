@@ -1,5 +1,5 @@
 // Root URL of Backend Application Server
-let webURL = "http://localhost:8091/bionic" ;
+let webURL = "https://bionic-reader-demo.herokuapp.com/bionic" ;
 // let globalCities = '' ;
 // let globalCountries = '' ;
 // let globalUsers = '' ;
