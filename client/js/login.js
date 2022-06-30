@@ -4,32 +4,29 @@ const loginErrorMsg = document.getElementById("login-error-msg");
 
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
+    //récupère username et password dans les champs de la page
     const username = loginForm.username.value;
     const password = loginForm.password.value;
     console.log(username + " " +password)
-
-    $.getScript("./js/custom.js",function (){
-        //callWebService();
-    });
     try {
+        //callwebservice et vas voir si une paire username/password existe
+        //si il en existe une ça se connecte sinon message d'erreur
         callWebService("/users/user/login_check/username=" + username.toString() + "&password=" + password.toString(), null, connectionSuccess, null, 'GET', 1, connectionFailed)
     }catch (e) {
         console.error(e);
         console.log("error")
     }
-        // callWebService("/users/user/login_check/username=admin&password=admin", null, log, null, 'GET', 1)
-    //callWebService("/users/user/note/3"  ,null,log, null, 'GET',1)
-
     function connectionFailed(){
+        //aucune paire username/password existant
         console.log("pas connection")
         loginErrorMsg.style.opacity = 1;
     }
 
     function connectionSuccess(data){
-        //conexion base de donnée et transmettre id
+        //connexion passage a la page index en envoyant l'id
         console.log("logged successfully")
         alert("You have successfully logged in.");
-        location.reload();
+        location.href('index.html')
     }
 })
 
