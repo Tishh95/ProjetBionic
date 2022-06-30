@@ -48,9 +48,9 @@
         console.log('appel à la fonction fill() de changeNote')
         let note = getProp('note',true)
         userid = getProp('userid',false)
-
-        const container = document.getElementById('title');
         console.log(note.title)
+        const container = document.getElementById('title');
+
         const text = document.createTextNode(note.title);
         container.appendChild(text);
         check(note.note)
