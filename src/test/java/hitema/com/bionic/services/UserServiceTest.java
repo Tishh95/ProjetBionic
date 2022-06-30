@@ -67,8 +67,8 @@ public class UserServiceTest {
     @Test
     @Order(5)
     void testFindByUsernameAndPassword(){
-         user = service.getUserbyLogin("admin","admin");
+         user = service.getUserByLoginNoHashCode("admin","admin");
 
-         assertTrue(user.toString()+"\n\n"+service.read(5l), user.getName().equals(service.read(5l).getName()) );
+         assertTrue("error while getting user by login", user.getName().equals(service.read(5l).getName()) );
     }
 }

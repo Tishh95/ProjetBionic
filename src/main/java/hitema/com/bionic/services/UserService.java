@@ -12,7 +12,8 @@ public interface UserService {
         User read(Long id);
         User update(User user);
         Boolean delete(Long id);
-        User getUserbyLogin(String username, String password);
+        User getUserByLogin(String username, String password);
+        User getUserByLoginNoHashCode(String username, String password);
 
         boolean createUser(String username, String password);
 }

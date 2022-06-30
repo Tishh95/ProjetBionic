@@ -78,8 +78,15 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    public User getUserbyLogin(String username, String password){
+    public User getUserByLogin(String username, String password){
         password = String.valueOf(password.hashCode());
         return repository.findByUsernameAndPassword(username,password);
     }
+
+
+    //No hash because the test value in local database aren't hashed
+    public User getUserByLoginNoHashCode(String username, String password){
+        return repository.findByUsernameAndPassword(username,password);
+    }
+
 }

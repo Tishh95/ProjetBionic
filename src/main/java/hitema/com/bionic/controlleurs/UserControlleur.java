@@ -38,7 +38,7 @@ public class UserControlleur {
     long getLoginFromLogin(@PathVariable("username") String username,@PathVariable("password") String password){
         log.trace("user username :{}",username);
         log.trace("user password :{}",password);
-        return service.getUserbyLogin(username,password).getId();
+        return service.getUserByLogin(username,password).getId();
     }
     @GetMapping("/user/subscribe/username={username}&password={password}")
     boolean subscribeUser(@PathVariable("username") String username,@PathVariable("password") String password){
