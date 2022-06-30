@@ -22,12 +22,13 @@ loginButton.addEventListener("click", (e) => {
         loginErrorMsg.style.opacity = 1;
     }
 
-    function connectionSuccess(data){
+    function connectionSuccess(data) {
         //connexion passage a la page index en envoyant l'id
         console.log("logged successfully")
         alert("You have successfully logged in.");
-        putProp('idUser',data,false)
-        document.location.href="./index.html";
+        putProp('idUser', data, false)
+        document.location.href = "./index.html";
+
     }
 })
 

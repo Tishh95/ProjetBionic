@@ -17,7 +17,6 @@ public class UserControlleur {
     private static final Logger log = LoggerFactory.getLogger(UserControlleur.class);
 
     private UserService service;
-    private UserRepository repository;
     public UserControlleur(UserService service) {
         this.service = service;
     }
@@ -43,17 +42,9 @@ public class UserControlleur {
         return service.getUserbyLogin(username,password).getId();
     }
     @GetMapping("/user/subscribe/username={username}&password={password}")
-    long createUser(@PathVariable("username") String username,@PathVariable("password") String password){
-        if (repository.existsByUsername(username)){
-            return 0;
-        }
-        else {
-            User user = new User();
-            user.setName(username);
-            user.setPassword(password);
-            service.create(user);
-            return 1;
-        }
+    boolean subscribeUser(@PathVariable("username") String username,@PathVariable("password") String password){
+
+        return service.createUser(username,password);
     }
 
 

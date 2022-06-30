@@ -13,4 +13,6 @@ public interface UserService {
         User update(User user);
         Boolean delete(Long id);
         User getUserbyLogin(String username, String password);
+
+        boolean createUser(String username, String password);
 }

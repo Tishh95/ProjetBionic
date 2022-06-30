@@ -61,15 +61,25 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public Boolean delete(Long id) {
-
         repository.deleteById(id);
         return read(id) == null;
-
     }
 
+    public boolean createUser(String username, String password){
+        if (repository.existsByUsername(username)){
+           return false ;
+        }
+        else {
+            User user = new User();
+            user.setName(username);
+            user.setPassword(password);
+            create(user);
+            return true;
+        }
+    }
 
     public User getUserbyLogin(String username, String password){
-        //hashage a faire après
+        password = String.valueOf(password.hashCode());
         return repository.findByUsernameAndPassword(username,password);
     }
 }
