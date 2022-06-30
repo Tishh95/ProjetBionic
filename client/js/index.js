@@ -95,5 +95,10 @@ function opencreateClub() {
 
 function deco() {
     user_id = null;
+    console.log(user_id)
+    removeProp('idUser')
+    localStorage.clear();
+    window.location.reload();
     post('login.html')
+
 }
