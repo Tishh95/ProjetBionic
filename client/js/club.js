@@ -1,9 +1,12 @@
+let club
+let addPerson = ' '
 function fill() {
     console.log('appel à la fonction fill()...')
-    let club = getProp('club',true)
+    club = getProp('club',true)
+    console.log(club.id)
     let userid = getProp('userid',false)
     console.log(userid)
-
+    console.log(club)
     callWebService("/clubs/userclub/",clubOk, 'GET',1)
 }
 
@@ -12,13 +15,21 @@ function clubOk(data) {
     for( k in data) {
         if(data[k].clubs.length > 0){
             for(j in data[k].clubs){
-                person.push(data[k].name)
+
+                if(data[k].clubs[j].id == club.id) {
+                    person.push(data[k])
+                }
             }
         } else {
         }
 
     }
-
-    document.getElementById('userList').innerHTML += person;
+    for(k in person){
+        addPerson += '<div class="divNotes"> ' +
+            '</br>' +
+            '<td>'+person[k].name+'</td>' +
+            '</div></a>'
+    }
+    document.getElementById('userList').innerHTML += addPerson;
 
 }

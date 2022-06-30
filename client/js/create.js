@@ -67,11 +67,13 @@ function fill() {
     let note = getProp('note',true)
     userid = getProp('userid',false)
     console.log(note)
+    console.log(userid)
     document.querySelector('input').value = note.title;
     document.querySelector('textarea').value = note.note
 }
 function fillcreate(){
-    userid = getProp('userid',false)
+    userid = getProp('user',false)
+    console.log(userid)
 }
 function r(data){
     console.log(data)

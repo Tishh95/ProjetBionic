@@ -42,9 +42,9 @@ function clubOk(data) {
 
 function displayOneClub(id) {
     console.log('display')
-    let club = gClubs[key];
+    let club = gClubs[id];
     putProp('club',club,true)
-    console.log(user_id)
+    console.log(club)
     putProp('userid',user_id,false)
     post('club.html')
 
@@ -56,8 +56,23 @@ function displayOneNote(id) {
     post('watchNote.html')
 }
 function drop(id) {
-    callWebService("/notes/note/drop/"+ id  ,null,deleteOk, null, 'GET',1)
+    callWebService("/notes/note/drop/"+ id  ,deleteOk, 'GET',1)
 }
 function deleteOk() {
+    clearBox()
     fill()
+}
+
+function opencreate() {
+    console.log('display')
+    let user =user_id;
+    putProp('user',user,true)
+    post('create.html')
+}
+function clearBox() {
+    var div = document.getElementById(tabNotes);
+
+    while(div.firstChild) {
+        div.removeChild(div.firstChild);
+    }
 }
