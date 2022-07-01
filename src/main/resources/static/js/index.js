@@ -97,10 +97,9 @@ function deco() {
 
 }
 
-function createClub(){
+function opencreateClub() {
     console.log('display')
     let user =user_id;
-    putProp('user',user,true)
-    putProp('club',gClubs[id],true)
+    putProp('userid',user,false)
     post('createClub.html')
 }
