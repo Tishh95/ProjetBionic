@@ -61,6 +61,8 @@ function create() {
     console.log(content)
     console.log(userid)
     callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,r,'GET',1)
+    post('index.html')
+
 }
 function fill() {
     console.log('appel à la fonction fill() de changeNote')
