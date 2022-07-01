@@ -96,3 +96,11 @@ function deco() {
     post('login.html')
 
 }
+
+function createClub(){
+    console.log('display')
+    let user =user_id;
+    putProp('user',user,true)
+    putProp('club',gClubs[id],true)
+    post('createClub.html')
+}
