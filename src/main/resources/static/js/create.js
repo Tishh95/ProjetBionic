@@ -61,7 +61,6 @@ function create() {
     console.log(content)
     console.log(userid)
     callWebService("/notes/note/create/" +title+"/"+content + "/" + userid,r,'GET',1)
-    post('index.html')
 
 }
 function fill() {
@@ -80,4 +79,5 @@ function fillcreate(){
 }
 function r(data){
     console.log(data)
+    post('index.html')
 }
